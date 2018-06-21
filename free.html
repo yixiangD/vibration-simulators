@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Free damped vibration</title>
+        <script type="text/javascript" src="d3.js">
+
+        </script>
+    </head>
+    <body>
+        <button onclick="start_count()">Start</button>
+        <button onclick="reset_count()">Reset</button>
+        <button onclick="stop_count()">Stop</button>
+
+        <script type="text/javascript">
+            var elapsedTime = 0.0, formatTime = 0.0, pause = 0;
+            function cal_time() {
+                elapsedTime += Date.now() - startTime;
+                formatTime = (elapsedTime / 1000).toFixed(2);
+                document.getElementById("timer").innerHTML = formatTime;
+
+            }
+
+            var mystart;
+            var startTime;
+            function start_count() {
+                startTime = Date.now();
+                mystart = setInterval(cal_time, 100);
+            }
+
+            var myreset;
+            function reset_count() {
+                myreset = clearInterval(mystart);
+                document.getElementById("timer").innerHTML = 0.0;
+            }
+
+            var mystop;
+            function stop_count() {
+                pause = 1;
+                document.getElementById("pause_moment").innerHTML = formatTime;
+                mystop = clearInterval(mystart);
+            }
+        </script>
+        Time: <span id="timer">0.0</span> s;
+        Stopped at: <span id="pause_moment"></span> s;
+
+    </body>
+</html>
