@@ -47,33 +47,7 @@
         <button onclick="reset_count()">Reset</button>
         <button onclick="stop_count()">Stop</button>
 
-        <script type="text/javascript">
-            var elapsedTime = 0.0, formatTime = 0.0, pause = 0;
-            function cal_time() {
-                elapsedTime += Date.now() - startTime;
-                formatTime = (elapsedTime / 1000).toFixed(2);
-                document.getElementById("timer").innerHTML = formatTime;
-            }
-
-            var mystart;
-            var startTime;
-            function start_count() {
-                startTime = Date.now();
-                mystart = setInterval(cal_time, 100);
-            }
-
-            var myreset;
-            function reset_count() {
-                myreset = clearInterval(mystart);
-                document.getElementById("timer").innerHTML = 0.0;
-            }
-
-            var mystop;
-            function stop_count() {
-                pause = 1;
-                document.getElementById("pause_moment").innerHTML = formatTime;
-                mystop = clearInterval(mystart);
-            }
+        <script type="text/javascript" src="timer.js">
         </script>
         Time: <span id="timer">0.0</span> s;
         Stopped at: <span id="pause_moment"></span> s;
@@ -90,25 +64,7 @@
         <p>Dashpot Coefficient: <span id="dashpotvalue"></span> Ns/m </p>
     </div>
 
-    <script>
-        var stiffslider = document.getElementById("stiffness");
-        var stiffoutput = document.getElementById("stiffvalue");
-        stiffoutput.innerHTML = stiffslider.value;
-        stiffslider.oninput = function() {
-            stiffoutput.innerHTML = this.value;
-        }
-        var massslider = document.getElementById("mass");
-        var massoutput = document.getElementById("massvalue");
-        massoutput.innerHTML = massslider.value;
-        massslider.oninput = function() {
-            massoutput.innerHTML = this.value;
-        }
-        var dashpotslider = document.getElementById("dashpot");
-        var dashpotoutput = document.getElementById("dashpotvalue");
-        dashpotoutput.innerHTML = dashpotslider.value;
-        dashpotslider.oninput = function() {
-            dashpotoutput.innerHTML = this.value;
-        }
+    <script type="text/javascript" src="sliders.js">
     </script>
     </body>
 </html>
